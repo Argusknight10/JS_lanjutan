@@ -1,6 +1,6 @@
 // CARA BUAT OBJEK DI JAVASCRIPT
 
-// 1. Object Literal
+// 1. OBJECT LITERAL
 // === Tidak bisa apabila terdapat object dengan nama variable yang sama ===
 // === Problem : Tidak Efektif Untuk Object yang Banyak
 let warrior = { 
@@ -22,7 +22,7 @@ let knight = {
 
 } 
 
-// 2. Function Declaration
+// 2. FUNCTION DECLARATION
 // === Tidak perlu membuat duplikat object, hanya perlu membuat 1, lalu sisanya hanya tinggal bagaimana cara memanggilnya/instansi-nya saja ===
 const methodWarrior = {
     attack: function(damage){
@@ -51,7 +51,7 @@ function Warrior(nama, power, health) {
 let Arya = Warrior('Arya', 100, 200)   // Inisialisasi
 let Rafif = Warrior('Rafif', 150, 300)  // Inisialisasi
 
-// 3. Constructor Function
+// 3. CONSTRUCTOR FUNCTION
 // === Tidak perlu menuliskan deklarasi variable dan return ===
 function Knight(nama, power, health) {
     this.nama = nama;
@@ -73,7 +73,7 @@ function Knight(nama, power, health) {
 let Bagus = new Knight('Bagus', 200, 600) // Inisialisasi menggunakan 'new'
 let Nuha = new Knight('Nuha', 300, 500) // Inisialisasi menggunakan 'new'
 
-// 4. Object.create
+// 4. OBJECT.CREATE()
 const methodAssasin = {
     attack: function(damage){
         this.critical += damage
@@ -101,3 +101,56 @@ function Assasin(nama, critical, health) {
 }
 let ARGUS = Assasin('ARGUS', 450, 200)   // Inisialisasi
 let ELVIRA = Assasin('ELVIRA', 500, 100)  // Inisialisasi
+
+// 5. PROTOTYPE
+// === Versi Object ===
+function Mage(nama, magic, health) {
+    this.nama = nama;
+    this.magic = magic;
+    this.health = health;
+}
+Mage.prototype.attack = function(damage){
+    this.magic += damage
+    return(`${this.nama} Sangatlah fantastis!, segera kelabui musuh dengan sihirmu!`)
+}
+Mage.prototype.defense = function(shield){
+    this.health += shield
+    return(`${this.nama} Mendapatkan shield!, segera lindungi rekan tim mu dengan sihirmu!`)
+}
+Mage.prototype.hurt = function(pain){
+    this.health -= pain
+    return(`${this.nama} Terkena serangan!, segera mundur dan pulihkan dirimu!`)
+}
+Mage.prototype.poisoned = function(nerf){
+    this.magic -= nerf
+    return(`${this.nama} Terkena poison!, bersembunyilah dan pulihkan sihirmu!`)
+}
+let BATMAN = new Mage('BATMAN', 650, 150)
+let JOKER = new Mage('JOKER', 700, 100)
+
+// === Versi Class === 
+class Mage {
+    constructor(nama, magic, health){
+        this.nama = nama;
+        this.magic = magic;
+        this.health = health;
+    }
+    attack(damage){
+        this.magic += damage
+        return(`${this.nama} Sangatlah fantastis!, segera kelabui musuh dengan sihirmu!`)
+    }
+    defense(shield){
+        this.health += shield
+        return(`${this.nama} Mendapatkan shield!, segera lindungi rekan tim mu dengan sihirmu!`)
+    }
+    hurt(pain){
+        this.health -= pain
+        return(`${this.nama} Terkena serangan!, segera mundur dan pulihkan dirimu!`)
+    }
+    poisoned(nerf){
+        this.magic -= nerf
+        return(`${this.nama} Terkena poison!, bersembunyilah dan pulihkan sihirmu!`)
+    }
+}
+let IRON_MAN = new Mage('IRON MAN', 650, 150)
+let CAPTAIN_AMERICA = new Mage('CAPTAIN AMERICA', 700, 100)
