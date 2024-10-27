@@ -91,6 +91,7 @@ console.log(a())
 console.log(a())
 // ========================================================================================================
 // Ada cara agar tidak perlu menyelipkan penulisan variable 'let a = add3()' untuk membungkus function-nya
+// Menggunakan metode SIAF (Self Invoking Anonymous Function)
 let add4 = (function(){
     let counter4 = 0 // Seolah-olah counter4 menjadi private tidak bisa diakses dari luar, tapi nilai tetap dipertahankan karena menjadi closure
     return function(){
